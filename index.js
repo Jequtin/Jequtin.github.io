@@ -44,7 +44,7 @@ const deleteTodo = async (event, id) => {
 }
 //edit todo
 const openTodo = async (event, id) => {
-	location.href = "file:///C:/Users/Jesse/prokkis/InnerView.html";
+	location.href = "https://jequtin.github.io/InnerView.html";
 	//await getTodos()
 }
 
