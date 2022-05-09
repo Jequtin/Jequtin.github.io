@@ -2,24 +2,20 @@
 const db = new Dexie('Todo App')
 db.version(1).stores({ todos: '++id, todo' })
 
-const forms = document.querySelector("#new-task-form");
+const form = document.querySelector("#new-task-form");
 const input = document.querySelector("#new-task-input");
 const list_el = document.querySelector("#tasks");
 
 //tuleeko tähän noi vaan uusiks or wat
-/* const list_in = document.querySelector("#inner");
-const form1 = document.querySelector("#new-task-form");
-const input1 = document.querySelector("#new-task-input");*/
-
 
 
 //add todo
-forms.onsubmit = async (event) => {
+form.onsubmit = async (event) => {
 	event.preventDefault();
 	const todo = input.value;
 	await db.todos.add({ todo })
 	await getTodos()
-	forms.reset()
+	form.reset()
 };
 
 //display todo
@@ -49,36 +45,6 @@ const deleteTodo = async (event, id) => {
 //edit todo
 const openTodo = async (event, id) => {
 	location.href = "file:///C:/Users/Jesse/prokkis/InnerView.html";
-	//await id.getInners()
+	//await getTodos()
 }
-
-
-
-
-
-//new window trying to do shit
-//add inner
-/* form1.onsubmit = async (event) => {
-	event.preventDefault();
-	const inner = input.value;
-	await db.Inners.add({ inner })
-	await getInners()
-	form.reset()
-};*/
-//Tee uusiksi innereilee, voiko tehdä järkevämmin databasessa?
-
-/*const getInners = async () => {
-	const allInners = await db.Inners.reverse().toArray()
-	list_in.innerHTML = allInners.map(inner => `
-	
-	<div class="task">
-	<div class="content">
-	<input id="edit" class="text" readonly="readonly" type="text" value= ${inner.inner}>
-	</div>
-	<div class="actions">
-	</div>
-	</div>
-	`).join("")
-
-}*/
 
